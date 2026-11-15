@@ -15,11 +15,11 @@ import {
   IconButton,
 } from '@mui/material';
 import BusinessIcon from '@mui/icons-material/Business';
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import LaunchIcon from '@mui/icons-material/Launch';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ScrollReveal from './ScrollReveal';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Experience() {
@@ -31,109 +31,170 @@ export default function Experience() {
       id="experience"
       component="section"
       sx={{
-        py: { xs: 8, md: 12 },
+        minHeight: { md: '100vh' },
+        display: { md: 'flex' },
+        flexDirection: { md: 'column' },
+        justifyContent: { md: 'center' },
+        py: { xs: 5, sm: 6, md: 4, lg: 5 },
         position: 'relative',
-        backgroundColor: '#0a0e14',
+        backgroundColor: '#ffffff',
+        boxSizing: 'border-box',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 5 } }}>
         {/* Section Title */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 8 } }}>
-          <Typography
-            variant="body2"
-            sx={{
-              color: 'primary.main',
-              fontFamily: "'JetBrains Mono', monospace",
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              mb: 1,
-            }}
-          >
-            Career Journey
-          </Typography>
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-              fontWeight: 800,
-            }}
-          >
-            <span className="text-gradient">Internship Experience</span>
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'text.secondary',
-              maxWidth: '620px',
-              mx: 'auto',
-              mt: 1.5,
-              fontSize: '0.95rem',
-            }}
-          >
-            Hands-on professional experience translating designs into live web applications, developing RESTful APIs, and collaborating with development teams.
-          </Typography>
-        </Box>
+        <ScrollReveal delay={0}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 3, sm: 3.5, md: 3.5, lg: 4 } }}>
+            <Box
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.8,
+                px: 1.6,
+                py: 0.5,
+                borderRadius: '100px',
+                backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                border: '1px solid rgba(37, 99, 235, 0.22)',
+                boxShadow: '0 2px 8px -2px rgba(37, 99, 235, 0.15)',
+                mb: 1.2,
+              }}
+            >
+              <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#2563eb' }} />
+              <Typography
+                sx={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: { xs: '0.74rem', sm: '0.78rem' },
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'primary.main',
+                  lineHeight: 1,
+                }}
+              >
+                Career Journey
+              </Typography>
+            </Box>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '1.5rem', sm: '1.85rem', md: '1.95rem', lg: '2.35rem' },
+                fontWeight: 800,
+                lineHeight: 1.2,
+              }}
+            >
+              <span className="text-gradient">Internship Experience</span>
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: 'text.secondary',
+                maxWidth: { xs: '360px', sm: '540px', md: '640px' },
+                mx: 'auto',
+                mt: { xs: 0.5, sm: 0.7 },
+                fontSize: { xs: '0.76rem', sm: '0.82rem', md: '0.82rem', lg: '0.88rem' },
+                lineHeight: { xs: 1.4, sm: 1.45 },
+              }}
+            >
+              Hands-on professional experience translating designs into live web applications, developing RESTful APIs, and collaborating with development teams.
+            </Typography>
+          </Box>
+        </ScrollReveal>
 
         {/* Experience Cards */}
-        <Grid container spacing={3.5}>
+        <Grid container spacing={{ xs: 2, sm: 2.5, md: 2.5, lg: 3 }} justifyContent="center">
           {experience.map((exp, idx) => (
-            <Grid item xs={12} md={6} key={exp.id}>
-              <Card
+            <Grid item xs={12} md={6} key={exp.id} sx={{ display: 'flex' }}>
+              <ScrollReveal delay={idx * 0.15} sx={{ width: '100%', display: 'flex' }}>
+                <Card
                 sx={{
-                  height: '100%',
+                  width: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  bgcolor: '#131b26',
-                  borderRadius: 3.5,
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  bgcolor: '#ffffff',
+                  borderRadius: { xs: 3, sm: 3.5 },
+                  border: '1px solid #e2e8f0',
+                  boxShadow: '0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.05)',
                   position: 'relative',
                   overflow: 'hidden',
                   transition: 'all 0.3s ease',
                   '&:hover': {
-                    borderColor: exp.type === 'Onsite' ? 'rgba(26, 229, 183, 0.45)' : 'rgba(168, 85, 247, 0.45)',
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(26, 229, 183, 0.1)',
+                    borderColor: 'primary.main',
+                    transform: { md: 'translateY(-3px)' },
+                    boxShadow: '0 20px 40px -8px rgba(37, 99, 235, 0.16), 0 8px 16px -4px rgba(15, 23, 42, 0.06)',
                   },
                 }}
               >
                 {/* Header Banner */}
                 <Box
                   sx={{
-                    p: 3,
-                    pb: 2,
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                    px: { xs: 2, sm: 2.2, md: 2.2, lg: 2.6 },
+                    py: { xs: 1.5, sm: 1.6, md: 1.4, lg: 1.8 },
+                    borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
                     background:
                       exp.type === 'Onsite'
-                        ? 'linear-gradient(90deg, rgba(26, 229, 183, 0.08) 0%, rgba(56, 189, 248, 0.04) 100%)'
-                        : 'linear-gradient(90deg, rgba(168, 85, 247, 0.08) 0%, rgba(26, 229, 183, 0.04) 100%)',
+                        ? 'linear-gradient(90deg, rgba(37, 99, 235, 0.04) 0%, rgba(56, 189, 248, 0.02) 100%)'
+                        : 'linear-gradient(90deg, rgba(2, 132, 199, 0.04) 0%, rgba(37, 99, 235, 0.02) 100%)',
                   }}
                 >
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
-                    <Stack direction="row" spacing={1.5} alignItems="center">
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      justifyContent: 'space-between',
+                      gap: 1,
+                    }}
+                  >
+                    <Stack direction="row" spacing={1.2} alignItems="center" sx={{ minWidth: 0, flex: 1 }}>
                       <Box
                         sx={{
-                          width: 42,
-                          height: 42,
-                          borderRadius: '10px',
-                          bgcolor: exp.type === 'Onsite' ? 'rgba(26, 229, 183, 0.15)' : 'rgba(168, 85, 247, 0.15)',
-                          color: exp.type === 'Onsite' ? 'primary.main' : '#c084fc',
+                          width: { xs: 38, sm: 42, md: 42, lg: 46 },
+                          height: { xs: 38, sm: 42, md: 42, lg: 46 },
+                          borderRadius: '12px',
+                          bgcolor: '#ffffff',
+                          border: '1px solid rgba(15, 23, 42, 0.1)',
+                          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
+                          flexShrink: 0,
+                          p: 0.6,
+                          overflow: 'hidden',
+                          transition: 'all 0.25s ease',
                         }}
                       >
-                        <BusinessIcon sx={{ fontSize: '1.4rem' }} />
+                        {exp.logo ? (
+                          <Box
+                            component="img"
+                            src={exp.logo}
+                            alt={exp.company}
+                            sx={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'contain',
+                            }}
+                          />
+                        ) : (
+                          <BusinessIcon sx={{ fontSize: { xs: '1.15rem', sm: '1.3rem' }, color: 'primary.main' }} />
+                        )}
                       </Box>
-                      <Box>
-                        <Typography variant="h5" sx={{ fontWeight: 700, fontSize: '1.2rem', color: '#ffffff' }}>
+                      <Box sx={{ minWidth: 0 }}>
+                        <Typography
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: { xs: '0.94rem', sm: '1.02rem', md: '1.02rem', lg: '1.12rem' },
+                            lineHeight: 1.25,
+                            color: '#0f172a',
+                          }}
+                        >
                           {exp.role}
                         </Typography>
                         <Typography
-                          variant="subtitle2"
                           sx={{
-                            color: exp.type === 'Onsite' ? 'primary.light' : '#c084fc',
+                            color: 'primary.main',
                             fontWeight: 600,
+                            fontSize: { xs: '0.78rem', sm: '0.84rem' },
+                            lineHeight: 1.3,
+                            mt: 0.2,
                           }}
                         >
                           {exp.company}
@@ -141,30 +202,39 @@ export default function Experience() {
                       </Box>
                     </Stack>
 
-                    <Stack direction="row" spacing={1}>
-                      <Chip
-                        label={exp.type}
-                        size="small"
-                        sx={{
-                          fontSize: '0.72rem',
-                          height: 24,
-                          bgcolor: exp.type === 'Onsite' ? 'rgba(26, 229, 183, 0.15)' : 'rgba(168, 85, 247, 0.15)',
-                          color: exp.type === 'Onsite' ? '#1ae5b7' : '#c084fc',
-                          fontWeight: 600,
-                          border: '1px solid',
-                          borderColor: exp.type === 'Onsite' ? 'rgba(26, 229, 183, 0.3)' : 'rgba(168, 85, 247, 0.3)',
-                        }}
-                      />
-                    </Stack>
+                    <Chip
+                      label={exp.type}
+                      size="small"
+                      sx={{
+                        fontSize: { xs: '0.68rem', sm: '0.72rem' },
+                        height: { xs: 22, sm: 24 },
+                        bgcolor: exp.type === 'Onsite' ? 'rgba(37, 99, 235, 0.08)' : 'rgba(2, 132, 199, 0.08)',
+                        color: exp.type === 'Onsite' ? 'primary.main' : '#0284c7',
+                        fontWeight: 600,
+                        border: '1px solid',
+                        borderColor: exp.type === 'Onsite' ? 'rgba(37, 99, 235, 0.25)' : 'rgba(2, 132, 199, 0.25)',
+                        flexShrink: 0,
+                      }}
+                    />
                   </Box>
 
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1.5, flexWrap: 'wrap', gap: 1 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: { xs: 'column', sm: 'row' },
+                      justifyContent: 'space-between',
+                      alignItems: { xs: 'flex-start', sm: 'center' },
+                      mt: 1.2,
+                      gap: { xs: 0.3, sm: 1 },
+                    }}
+                  >
                     <Typography
                       variant="caption"
                       sx={{
                         color: 'text.secondary',
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: '0.78rem',
+                        fontSize: { xs: '0.7rem', sm: '0.74rem', md: '0.73rem', lg: '0.76rem' },
+                        fontWeight: 500,
                       }}
                     >
                       📅 {exp.period} &bull; ({exp.duration})
@@ -173,7 +243,8 @@ export default function Experience() {
                       variant="caption"
                       sx={{
                         color: 'text.secondary',
-                        fontSize: '0.78rem',
+                        fontSize: { xs: '0.7rem', sm: '0.74rem', md: '0.73rem', lg: '0.76rem' },
+                        fontWeight: 500,
                       }}
                     >
                       📍 {exp.location}
@@ -182,20 +253,38 @@ export default function Experience() {
                 </Box>
 
                 {/* Content Body */}
-                <CardContent sx={{ p: 3, pt: 2.5, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                <CardContent
+                  sx={{
+                    px: { xs: 2, sm: 2.2, md: 2.2, lg: 2.6 },
+                    py: { xs: 1.6, sm: 1.8, md: 1.4, lg: 1.8 },
+                    flexGrow: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
                   {/* Responsibilities list */}
-                  <Stack spacing={1.5} sx={{ mb: 3 }}>
+                  <Stack
+                    spacing={{ xs: 0.75, sm: 0.9, md: 0.7, lg: 0.95 }}
+                    sx={{ mb: { xs: 1.6, sm: 1.8, md: 1.3, lg: 1.8 } }}
+                  >
                     {exp.points.map((point, pIdx) => (
-                      <Stack direction="row" spacing={1.2} alignItems="flex-start" key={pIdx}>
+                      <Stack direction="row" spacing={1} alignItems="flex-start" key={pIdx}>
                         <CheckCircleOutlineIcon
                           sx={{
-                            color: exp.type === 'Onsite' ? 'primary.main' : '#c084fc',
-                            fontSize: '1.05rem',
-                            mt: 0.3,
+                            color: 'primary.main',
+                            fontSize: { xs: '0.95rem', sm: '1rem' },
+                            mt: '2px',
                             flexShrink: 0,
                           }}
                         />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: '#334155',
+                            fontSize: { xs: '0.76rem', sm: '0.8rem', md: '0.76rem', lg: '0.82rem' },
+                            lineHeight: { xs: 1.4, sm: 1.46, md: 1.42, lg: 1.48 },
+                          }}
+                        >
                           {point}
                         </Typography>
                       </Stack>
@@ -210,27 +299,35 @@ export default function Experience() {
                         color: 'text.secondary',
                         fontFamily: "'JetBrains Mono', monospace",
                         fontWeight: 600,
-                        fontSize: '0.72rem',
+                        fontSize: { xs: '0.66rem', sm: '0.7rem' },
                         display: 'block',
-                        mb: 1,
+                        mb: { xs: 0.6, sm: 0.8 },
                         textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
+                        letterSpacing: '0.04em',
                       }}
                     >
                       Technologies Practiced:
                     </Typography>
-                    <Stack direction="row" spacing={0.8} flexWrap="wrap" useFlexGap sx={{ mb: 2.5 }}>
+                    <Stack
+                      direction="row"
+                      spacing={0.6}
+                      flexWrap="wrap"
+                      useFlexGap
+                      sx={{ mb: { xs: 1.4, sm: 1.6, md: 1.2, lg: 1.6 } }}
+                    >
                       {exp.skills.map((s) => (
                         <Chip
                           key={s}
                           label={s}
                           size="small"
                           sx={{
-                            bgcolor: 'rgba(35, 43, 54, 0.7)',
-                            color: 'text.primary',
-                            fontSize: '0.72rem',
-                            height: 22,
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            bgcolor: '#f1f5f9',
+                            color: '#0f172a',
+                            fontSize: { xs: '0.66rem', sm: '0.7rem' },
+                            height: { xs: 20, sm: 22 },
+                            border: '1px solid #e2e8f0',
+                            fontWeight: 600,
+                            px: 0.3,
                           }}
                         />
                       ))}
@@ -240,16 +337,19 @@ export default function Experience() {
                     <Button
                       variant="outlined"
                       fullWidth
-                      startIcon={<VerifiedIcon />}
-                      endIcon={<LaunchIcon sx={{ fontSize: '0.9rem !important' }} />}
+                      startIcon={<VerifiedIcon sx={{ fontSize: { xs: '1rem', sm: '1.1rem' } }} />}
+                      endIcon={<LaunchIcon sx={{ fontSize: '0.85rem !important' }} />}
                       onClick={() => setActiveCert(exp)}
                       sx={{
-                        borderColor: exp.type === 'Onsite' ? 'rgba(26, 229, 183, 0.35)' : 'rgba(168, 85, 247, 0.35)',
-                        color: exp.type === 'Onsite' ? 'primary.light' : '#c084fc',
-                        py: 0.9,
+                        borderColor: 'rgba(37, 99, 235, 0.35)',
+                        color: 'primary.main',
+                        py: { xs: 0.65, sm: 0.75, md: 0.65, lg: 0.75 },
+                        fontSize: { xs: '0.78rem', sm: '0.82rem', md: '0.79rem', lg: '0.84rem' },
+                        fontWeight: 600,
+                        borderRadius: '8px',
                         '&:hover': {
-                          borderColor: exp.type === 'Onsite' ? 'primary.main' : '#c084fc',
-                          bgcolor: exp.type === 'Onsite' ? 'rgba(26, 229, 183, 0.08)' : 'rgba(168, 85, 247, 0.08)',
+                          borderColor: 'primary.main',
+                          bgcolor: 'rgba(37, 99, 235, 0.05)',
                         },
                       }}
                     >
@@ -258,7 +358,8 @@ export default function Experience() {
                   </Box>
                 </CardContent>
               </Card>
-            </Grid>
+            </ScrollReveal>
+          </Grid>
           ))}
         </Grid>
       </Container>
@@ -271,10 +372,10 @@ export default function Experience() {
         fullWidth
         PaperProps={{
           sx: {
-            bgcolor: '#141c26',
+            bgcolor: '#ffffff',
             borderRadius: 3,
-            border: '1px solid rgba(26, 229, 183, 0.3)',
-            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85)',
+            border: '1px solid rgba(15, 23, 42, 0.12)',
+            boxShadow: '0 24px 60px rgba(15, 23, 42, 0.15)',
           },
         }}
       >
@@ -285,13 +386,23 @@ export default function Experience() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
                 py: 1.5,
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main' }}>
-                {activeCert.company} — Certificate of Internship
-              </Typography>
+              <Stack direction="row" spacing={1.5} alignItems="center">
+                {activeCert.logo && (
+                  <Box
+                    component="img"
+                    src={activeCert.logo}
+                    alt={activeCert.company}
+                    sx={{ width: 28, height: 28, objectFit: 'contain' }}
+                  />
+                )}
+                <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.main', fontSize: '1rem' }}>
+                  {activeCert.company} — Certificate of Internship
+                </Typography>
+              </Stack>
               <IconButton size="small" onClick={() => setActiveCert(null)} sx={{ color: 'text.secondary' }}>
                 <CloseIcon />
               </IconButton>

@@ -6,23 +6,20 @@ import {
   Typography,
   Button,
   Stack,
-  Chip,
   Dialog,
   DialogTitle,
   DialogContent,
   IconButton,
-  Tooltip,
 } from '@mui/material';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import CloseIcon from '@mui/icons-material/Close';
 import LaunchIcon from '@mui/icons-material/Launch';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ScrollReveal from './ScrollReveal';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Hero() {
@@ -39,6 +36,7 @@ export default function Hero() {
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
+        backgroundColor: '#ffffff',
         pt: { xs: 12, md: 10 },
         pb: { xs: 8, md: 6 },
       }}
@@ -53,7 +51,7 @@ export default function Hero() {
           borderRadius: '50%',
           top: { xs: '10%', md: '15%' },
           left: { xs: '-6rem', md: '-10rem' },
-          background: 'radial-gradient(circle, rgba(26, 229, 183, 0.16) 0%, rgba(26, 229, 183, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 70%)',
           filter: 'blur(45px)',
           pointerEvents: 'none',
         }}
@@ -67,70 +65,83 @@ export default function Hero() {
           borderRadius: '50%',
           bottom: '10%',
           right: { xs: '-5rem', md: '-8rem' },
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(168, 85, 247, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0) 70%)',
           filter: 'blur(50px)',
           pointerEvents: 'none',
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={{ xs: 4, md: 6 }} alignItems="center">
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, px: { xs: 2, sm: 3, md: 4, lg: 5 } }}>
+        <Grid container spacing={{ xs: 4, md: 5, lg: 6 }} alignItems="center">
           {/* Left Text Intro */}
           <Grid item xs={12} md={7} order={{ xs: 2, md: 1 }}>
-            <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+            <ScrollReveal delay={0.08} yOffset={25}>
+              <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
               <Stack
                 direction="row"
                 spacing={1.5}
                 alignItems="center"
                 justifyContent={{ xs: 'center', md: 'flex-start' }}
-                sx={{ mb: 1.5 }}
+                sx={{ mb: 1.8 }}
               >
                 <Typography
                   variant="body2"
                   sx={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: 'primary.main',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    color: '#475569',
                     fontWeight: 600,
-                    letterSpacing: '0.06em',
-                    fontSize: { xs: '0.8rem', md: '0.85rem' },
+                    fontSize: { xs: '0.85rem', md: '0.92rem' },
+                    letterSpacing: '0.01em',
                   }}
                 >
                   Hello, I'm
                 </Typography>
-                <Chip
-                  icon={
-                    <Box
-                      sx={{
-                        width: 7,
-                        height: 7,
-                        borderRadius: '50%',
-                        bgcolor: '#1ae5b7',
-                        boxShadow: '0 0 8px #1ae5b7',
-                        ml: '8px !important',
-                      }}
-                    />
-                  }
-                  label="Available for Work"
-                  size="small"
+                <Box
                   sx={{
-                    bgcolor: 'rgba(26, 229, 183, 0.1)',
-                    color: 'primary.light',
-                    border: '1px solid rgba(26, 229, 183, 0.35)',
-                    fontWeight: 600,
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: '0.72rem',
-                    height: '24px',
-                    '& .MuiChip-label': { pl: 0.8, pr: 1.2 },
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    px: 1.4,
+                    py: 0.45,
+                    borderRadius: '999px',
+                    bgcolor: 'rgba(16, 185, 129, 0.08)',
+                    border: '1px solid rgba(16, 185, 129, 0.28)',
+                    boxShadow: '0 1px 4px rgba(16, 185, 129, 0.08)',
+                    transition: 'all 0.25s ease',
                   }}
-                />
+                >
+                  <Box
+                    className="animate-pulse-dot"
+                    sx={{
+                      width: 7,
+                      height: 7,
+                      borderRadius: '50%',
+                      bgcolor: '#10b981',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      color: '#065f46',
+                      fontWeight: 600,
+                      fontSize: '0.75rem',
+                      letterSpacing: '0.01em',
+                      lineHeight: 1,
+                    }}
+                  >
+                    Available for Opportunities
+                  </Typography>
+                </Box>
               </Stack>
 
               <Typography
                 variant="h1"
                 sx={{
-                  fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.2rem' },
+                  fontSize: { xs: '2.2rem', sm: '2.8rem', md: '3.4rem' },
                   fontWeight: 800,
-                  lineHeight: 1.1,
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.02em',
                   mb: 1,
                 }}
               >
@@ -140,10 +151,10 @@ export default function Hero() {
               <Typography
                 variant="h4"
                 sx={{
-                  fontSize: { xs: '1.2rem', sm: '1.45rem', md: '1.65rem' },
-                  color: 'text.secondary',
-                  fontWeight: 500,
-                  mb: 2.2,
+                  fontSize: { xs: '1.05rem', sm: '1.2rem', md: '1.35rem' },
+                  color: '#1e293b',
+                  fontWeight: 600,
+                  mb: 1.8,
                 }}
               >
                 {personal.subtitle}
@@ -152,132 +163,370 @@ export default function Hero() {
               <Typography
                 variant="body1"
                 sx={{
-                  color: 'text.secondary',
+                  color: '#475569',
                   maxWidth: '38rem',
-                  fontSize: { xs: '0.92rem', md: '1rem' },
-                  lineHeight: 1.7,
-                  mb: 3.5,
+                  fontSize: { xs: '0.86rem', md: '0.92rem' },
+                  lineHeight: 1.65,
+                  mb: 3,
                   mx: { xs: 'auto', md: 0 },
                 }}
               >
                 {personal.bio}
               </Typography>
 
-              {/* Resume & Social Action Buttons */}
-              <Stack
-                direction="row"
-                spacing={1.5}
-                flexWrap="wrap"
-                useFlexGap
-                justifyContent={{ xs: 'center', md: 'flex-start' }}
-                sx={{ mb: 4 }}
+              {/* Professional Action Buttons */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 1.2,
+                  mb: 3.5,
+                  maxWidth: { xs: '100%', sm: '42rem' },
+                  mx: { xs: 'auto', md: 0 },
+                }}
               >
-                {/* Download Resume Button */}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href={personal.resume}
-                  download="Karthikeyan_S_Resume.pdf"
-                  startIcon={<FileDownloadIcon />}
+                {/* Desktop Unified Row (lg and up) */}
+                <Box
                   sx={{
-                    px: 2.5,
-                    py: 1.1,
-                    fontWeight: 700,
-                    boxShadow: '0 4px 16px rgba(26, 229, 183, 0.35)',
-                    '&:hover': {
-                      boxShadow: '0 6px 24px rgba(26, 229, 183, 0.55)',
-                    },
+                    display: { xs: 'none', lg: 'flex' },
+                    alignItems: 'center',
+                    gap: 1,
+                    flexWrap: 'nowrap',
                   }}
                 >
-                  Download Resume
-                </Button>
-
-                {/* View Resume Button */}
-                <Button
-                  variant="outlined"
-                  onClick={() => setResumeOpen(true)}
-                  startIcon={<VisibilityIcon />}
-                  sx={{
-                    borderColor: 'rgba(26, 229, 183, 0.4)',
-                    color: 'primary.light',
-                    px: 2.2,
-                    py: 1.1,
-                    fontWeight: 600,
-                    bgcolor: 'rgba(26, 229, 183, 0.05)',
-                    '&:hover': {
-                      borderColor: 'primary.main',
-                      bgcolor: 'rgba(26, 229, 183, 0.15)',
-                    },
-                  }}
-                >
-                  View Resume
-                </Button>
-
-                <Button
-                  variant="contained"
-                  href={personal.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  startIcon={<GitHubIcon />}
-                  sx={{
-                    bgcolor: 'secondary.main',
-                    color: 'text.primary',
-                    px: 2,
-                    py: 1.1,
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    '&:hover': {
-                      bgcolor: '#24292e',
-                      borderColor: 'rgba(255, 255, 255, 0.3)',
-                    },
-                  }}
-                >
-                  GitHub
-                </Button>
-
-                <Button
-                  variant="contained"
-                  href={personal.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  startIcon={<LinkedInIcon />}
-                  sx={{
-                    bgcolor: 'secondary.main',
-                    color: 'text.primary',
-                    px: 2,
-                    py: 1.1,
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    '&:hover': {
-                      bgcolor: '#0a66c2',
-                      color: '#ffffff',
-                    },
-                  }}
-                >
-                  LinkedIn
-                </Button>
-
-                {personal.leetcode && (
                   <Button
                     variant="contained"
-                    href={personal.leetcode}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    startIcon={<TerminalIcon />}
+                    color="primary"
+                    size="small"
+                    href={personal.resume}
+                    download="Karthikeyan_S_Resume.pdf"
+                    startIcon={<FileDownloadIcon sx={{ fontSize: '1rem !important' }} />}
                     sx={{
-                      bgcolor: 'secondary.main',
-                      color: 'text.primary',
                       px: 2,
-                      py: 1.1,
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      py: 0.85,
+                      fontSize: '0.82rem',
+                      fontWeight: 700,
+                      whiteSpace: 'nowrap',
+                      borderRadius: '10px',
+                      bgcolor: 'primary.main',
+                      color: '#ffffff',
+                      boxShadow: '0 4px 16px rgba(37, 99, 235, 0.4)',
+                      transition: 'all 0.25s ease',
                       '&:hover': {
-                        bgcolor: '#FFA116',
-                        color: '#000000',
+                        bgcolor: 'primary.dark',
+                        boxShadow: '0 6px 22px rgba(37, 99, 235, 0.6)',
+                        transform: 'translateY(-2px)',
                       },
                     }}
                   >
-                    LeetCode
+                    Download Resume
                   </Button>
-                )}
-              </Stack>
+
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={() => setResumeOpen(true)}
+                    startIcon={<VisibilityIcon sx={{ fontSize: '1rem !important' }} />}
+                    sx={{
+                      borderColor: 'rgba(37, 99, 235, 0.4)',
+                      color: 'primary.main',
+                      px: 1.8,
+                      py: 0.85,
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      whiteSpace: 'nowrap',
+                      borderRadius: '10px',
+                      bgcolor: 'rgba(37, 99, 235, 0.04)',
+                      transition: 'all 0.25s ease',
+                      '&:hover': {
+                        borderColor: 'primary.main',
+                        bgcolor: 'rgba(37, 99, 235, 0.08)',
+                        boxShadow: '0 4px 16px rgba(37, 99, 235, 0.15)',
+                        transform: 'translateY(-2px)',
+                      },
+                    }}
+                  >
+                    View Resume
+                  </Button>
+
+                  <Box
+                    sx={{
+                      width: '1px',
+                      height: '24px',
+                      bgcolor: 'rgba(15, 23, 42, 0.12)',
+                      mx: 0.5,
+                    }}
+                  />
+
+                  <Button
+                    variant="contained"
+                    size="small"
+                    href={personal.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    startIcon={<GitHubIcon sx={{ fontSize: '0.95rem !important', color: '#ffffff !important' }} />}
+                    sx={{
+                      backgroundColor: '#24292e !important',
+                      color: '#ffffff !important',
+                      px: 1.6,
+                      py: 0.85,
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      whiteSpace: 'nowrap',
+                      borderRadius: '10px',
+                      border: '1px solid #24292e',
+                      boxShadow: '0 2px 6px -1px rgba(36, 41, 46, 0.35)',
+                      transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                      '&:hover': {
+                        backgroundColor: '#24292e !important',
+                        color: '#ffffff !important',
+                        borderColor: '#24292e',
+                        boxShadow: '0 8px 22px -2px rgba(36, 41, 46, 0.5)',
+                        transform: 'translateY(-2.5px)',
+                      },
+                    }}
+                  >
+                    GitHub
+                  </Button>
+
+                  <Button
+                    variant="contained"
+                    size="small"
+                    href={personal.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    startIcon={<LinkedInIcon sx={{ fontSize: '0.95rem !important', color: '#ffffff !important' }} />}
+                    sx={{
+                      backgroundColor: '#0a66c2 !important',
+                      color: '#ffffff !important',
+                      px: 1.6,
+                      py: 0.85,
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      whiteSpace: 'nowrap',
+                      borderRadius: '10px',
+                      border: '1px solid #0a66c2',
+                      boxShadow: '0 2px 6px -1px rgba(10, 102, 194, 0.35)',
+                      transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                      '&:hover': {
+                        backgroundColor: '#0a66c2 !important',
+                        color: '#ffffff !important',
+                        borderColor: '#0a66c2',
+                        boxShadow: '0 8px 22px -2px rgba(10, 102, 194, 0.55)',
+                        transform: 'translateY(-2.5px)',
+                      },
+                    }}
+                  >
+                    LinkedIn
+                  </Button>
+
+                  {personal.leetcode && (
+                    <Button
+                      variant="contained"
+                      size="small"
+                      href={personal.leetcode}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<TerminalIcon sx={{ fontSize: '0.95rem !important', color: '#000000 !important' }} />}
+                      sx={{
+                        backgroundColor: '#FFA116 !important',
+                        color: '#000000 !important',
+                        px: 1.6,
+                        py: 0.85,
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        whiteSpace: 'nowrap',
+                        borderRadius: '10px',
+                        border: '1px solid #e59012',
+                        boxShadow: '0 2px 6px -1px rgba(255, 161, 22, 0.4)',
+                        transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                        '&:hover': {
+                          backgroundColor: '#FFA116 !important',
+                          color: '#000000 !important',
+                          borderColor: '#e59012',
+                          boxShadow: '0 8px 22px -2px rgba(255, 161, 22, 0.6)',
+                          transform: 'translateY(-2.5px)',
+                        },
+                      }}
+                    >
+                      LeetCode
+                    </Button>
+                  )}
+                </Box>
+
+                {/* Tablet & Mobile Layout (below lg: iPad, tablets, phones) */}
+                <Box
+                  sx={{
+                    display: { xs: 'flex', lg: 'none' },
+                    flexDirection: 'column',
+                    gap: 1.2,
+                    alignItems: { xs: 'center', md: 'flex-start' },
+                    width: '100%',
+                  }}
+                >
+                  {/* Row 1: Resume CTAs (Naturally proportioned side-by-side) */}
+                  <Stack
+                    direction="row"
+                    spacing={1.2}
+                    justifyContent={{ xs: 'center', md: 'flex-start' }}
+                    sx={{ width: '100%', maxWidth: '360px' }}
+                  >
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      href={personal.resume}
+                      download="Karthikeyan_S_Resume.pdf"
+                      startIcon={<FileDownloadIcon sx={{ fontSize: '0.95rem !important' }} />}
+                      sx={{
+                        py: 0.85,
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        whiteSpace: 'nowrap',
+                        borderRadius: '10px',
+                        bgcolor: 'primary.main',
+                        color: '#ffffff',
+                        boxShadow: '0 4px 14px rgba(37, 99, 235, 0.35)',
+                        '&:hover': {
+                          bgcolor: 'primary.dark',
+                          transform: 'translateY(-2px)',
+                        },
+                      }}
+                    >
+                      Download Resume
+                    </Button>
+
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      size="small"
+                      onClick={() => setResumeOpen(true)}
+                      startIcon={<VisibilityIcon sx={{ fontSize: '0.95rem !important' }} />}
+                      sx={{
+                        borderColor: 'rgba(37, 99, 235, 0.4)',
+                        color: 'primary.main',
+                        py: 0.85,
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
+                        borderRadius: '10px',
+                        bgcolor: 'rgba(37, 99, 235, 0.04)',
+                        '&:hover': {
+                          borderColor: 'primary.main',
+                          bgcolor: 'rgba(37, 99, 235, 0.08)',
+                          transform: 'translateY(-2px)',
+                        },
+                      }}
+                    >
+                      View Resume
+                    </Button>
+                  </Stack>
+
+                  {/* Row 2: Social Connect Links (Permanent native brand colors with pure elevation on hover) */}
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    justifyContent={{ xs: 'center', md: 'flex-start' }}
+                    sx={{ width: '100%', maxWidth: '360px' }}
+                  >
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      size="small"
+                      href={personal.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<GitHubIcon sx={{ fontSize: '0.92rem !important', color: '#ffffff !important' }} />}
+                      sx={{
+                        backgroundColor: '#24292e !important',
+                        color: '#ffffff !important',
+                        py: 0.85,
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
+                        borderRadius: '10px',
+                        border: '1px solid #24292e',
+                        boxShadow: '0 2px 6px -1px rgba(36, 41, 46, 0.35)',
+                        transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                        '&:hover': {
+                          backgroundColor: '#24292e !important',
+                          color: '#ffffff !important',
+                          borderColor: '#24292e',
+                          boxShadow: '0 8px 22px -2px rgba(36, 41, 46, 0.5)',
+                          transform: 'translateY(-2.5px)',
+                        },
+                      }}
+                    >
+                      GitHub
+                    </Button>
+
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      size="small"
+                      href={personal.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<LinkedInIcon sx={{ fontSize: '0.92rem !important', color: '#ffffff !important' }} />}
+                      sx={{
+                        backgroundColor: '#0a66c2 !important',
+                        color: '#ffffff !important',
+                        py: 0.85,
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
+                        borderRadius: '10px',
+                        border: '1px solid #0a66c2',
+                        boxShadow: '0 2px 6px -1px rgba(10, 102, 194, 0.35)',
+                        transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                        '&:hover': {
+                          backgroundColor: '#0a66c2 !important',
+                          color: '#ffffff !important',
+                          borderColor: '#0a66c2',
+                          boxShadow: '0 8px 22px -2px rgba(10, 102, 194, 0.55)',
+                          transform: 'translateY(-2.5px)',
+                        },
+                      }}
+                    >
+                      LinkedIn
+                    </Button>
+
+                    {personal.leetcode && (
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        size="small"
+                        href={personal.leetcode}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        startIcon={<TerminalIcon sx={{ fontSize: '0.92rem !important', color: '#000000 !important' }} />}
+                        sx={{
+                          backgroundColor: '#FFA116 !important',
+                          color: '#000000 !important',
+                          py: 0.85,
+                          fontSize: '0.78rem',
+                          fontWeight: 700,
+                          whiteSpace: 'nowrap',
+                          borderRadius: '10px',
+                          border: '1px solid #e59012',
+                          boxShadow: '0 2px 6px -1px rgba(255, 161, 22, 0.4)',
+                          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                          '&:hover': {
+                            backgroundColor: '#FFA116 !important',
+                            color: '#000000 !important',
+                            borderColor: '#e59012',
+                            boxShadow: '0 8px 22px -2px rgba(255, 161, 22, 0.6)',
+                            transform: 'translateY(-2.5px)',
+                          },
+                        }}
+                      >
+                        LeetCode
+                      </Button>
+                    )}
+                  </Stack>
+                </Box>
+              </Box>
 
               {/* Key Metrics / Stats Bar */}
               <Grid
@@ -285,7 +534,7 @@ export default function Hero() {
                 spacing={2}
                 sx={{
                   pt: 2.5,
-                  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderTop: '1px solid rgba(15, 23, 42, 0.08)',
                   maxWidth: '38rem',
                   mx: { xs: 'auto', md: 0 },
                 }}
@@ -321,100 +570,43 @@ export default function Hero() {
                 ))}
               </Grid>
             </Box>
-          </Grid>
+          </ScrollReveal>
+        </Grid>
 
-          {/* Right Image / Portrait */}
-          <Grid item xs={12} md={5} order={{ xs: 1, md: 2 }}>
+        {/* Right Image Showcase */}
+        <Grid item xs={12} md={5} order={{ xs: 1, md: 2 }}>
+          <ScrollReveal delay={0.2} yOffset={30}>
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: { xs: 'center', md: 'flex-end', lg: 'center' },
                 alignItems: 'center',
                 position: 'relative',
+                pt: { xs: 1, md: 0 },
+                pb: { xs: 2, md: 0 },
               }}
             >
-              {/* Glowing Aura Ring */}
               <Box
-                className="animate-glow"
+                component="img"
+                src={personal.avatar}
+                alt={personal.name}
+                loading="eager"
                 sx={{
-                  position: 'absolute',
-                  width: { xs: '17rem', sm: '21rem', md: '23rem' },
-                  height: { xs: '17rem', sm: '21rem', md: '23rem' },
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(26, 229, 183, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%)',
-                  filter: 'blur(28px)',
-                  zIndex: 0,
+                  width: 'auto',
+                  maxWidth: { xs: '80%', sm: '85%', md: '100%' },
+                  height: { xs: '260px', sm: '330px', md: '430px', lg: '490px' },
+                  objectFit: 'contain',
+                  imageRendering: '-webkit-optimize-contrast',
+                  filter: 'drop-shadow(0 15px 30px rgba(15, 23, 42, 0.12))',
+                  transition: 'transform 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.02)',
+                  },
                 }}
               />
-
-              {/* Portrait Container */}
-              <Box
-                className="animate-float"
-                sx={{
-                  position: 'relative',
-                  zIndex: 1,
-                  p: '6px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #1ae5b7 0%, rgba(168, 85, 247, 0.8) 100%)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
-                }}
-              >
-                <Box
-                  component="img"
-                  src={personal.avatar}
-                  alt={personal.name}
-                  sx={{
-                    width: { xs: 240, sm: 280, md: 320 },
-                    height: { xs: 240, sm: 280, md: 320 },
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '4px solid #0e131b',
-                    display: 'block',
-                  }}
-                />
-
-                {/* Badge */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 12,
-                    right: 8,
-                    bgcolor: 'rgba(20, 28, 38, 0.95)',
-                    border: '1px solid rgba(26, 229, 183, 0.4)',
-                    backdropFilter: 'blur(10px)',
-                    borderRadius: '24px',
-                    px: 1.8,
-                    py: 0.6,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    boxShadow: '0 8px 16px rgba(0,0,0,0.4)',
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: '50%',
-                      bgcolor: '#1ae5b7',
-                      boxShadow: '0 0 10px #1ae5b7',
-                    }}
-                  />
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      fontWeight: 700,
-                      fontFamily: "'JetBrains Mono', monospace",
-                      color: '#ffffff',
-                      fontSize: '0.75rem',
-                    }}
-                  >
-                    MERN Developer
-                  </Typography>
-                </Box>
-              </Box>
             </Box>
-          </Grid>
+          </ScrollReveal>
+        </Grid>
         </Grid>
 
         {/* Scroll down indicator */}
@@ -452,10 +644,10 @@ export default function Hero() {
         fullWidth
         PaperProps={{
           sx: {
-            bgcolor: '#141c26',
+            bgcolor: '#ffffff',
             borderRadius: 3,
-            border: '1px solid rgba(26, 229, 183, 0.3)',
-            boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85)',
+            border: '1px solid rgba(15, 23, 42, 0.1)',
+            boxShadow: '0 24px 60px rgba(15, 23, 42, 0.15)',
           },
         }}
       >
@@ -464,7 +656,7 @@ export default function Hero() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
             py: 1.5,
           }}
         >

@@ -14,12 +14,12 @@ import {
   Tooltip,
   CircularProgress,
 } from '@mui/material';
-import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import SendIcon from '@mui/icons-material/Send';
+import ScrollReveal from './ScrollReveal';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Contact() {
@@ -100,21 +100,44 @@ export default function Contact() {
       label: 'Email',
       value: personal.email,
       href: `mailto:${personal.email}`,
-      icon: <EmailIcon />,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 193" width="22" height="22">
+          <path fill="#4285F4" d="M58.182 192.05V93.14L27.507 65.077L0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455z"/>
+          <path fill="#34A853" d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837l-27.026 25.798z"/>
+          <path fill="#EA4335" d="m58.182 93.14l-4.174-38.647l4.174-36.989L128 69.868l69.818-52.364l4.669 34.992l-4.669 40.644L128 145.504z"/>
+          <path fill="#FBBC04" d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945z"/>
+          <path fill="#C5221F" d="m0 49.504l26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23z"/>
+        </svg>
+      ),
+      badgeBg: '#ffffff',
+      badgeBorder: '1px solid #e2e8f0',
+      badgeShadow: '0 2px 8px rgba(15, 23, 42, 0.06)',
+      hoverBorder: '#EA4335',
+      hoverShadow: 'rgba(234, 67, 53, 0.16)',
       actionable: true,
     },
     {
       label: 'Phone',
       value: personal.phone,
       href: `tel:${personal.phone}`,
-      icon: <PhoneIcon />,
+      icon: <PhoneIcon sx={{ fontSize: '1.25rem', color: '#ffffff' }} />,
+      badgeBg: '#22c55e',
+      badgeBorder: '1px solid #16a34a',
+      badgeShadow: '0 2px 8px rgba(34, 197, 94, 0.35)',
+      hoverBorder: '#16a34a',
+      hoverShadow: 'rgba(34, 197, 94, 0.16)',
       actionable: false,
     },
     {
       label: 'GitHub',
       value: 'github.com/karthikeyan343',
       href: personal.github,
-      icon: <GitHubIcon />,
+      icon: <GitHubIcon sx={{ fontSize: '1.35rem', color: '#ffffff' }} />,
+      badgeBg: '#24292e',
+      badgeBorder: '1px solid #24292e',
+      badgeShadow: '0 2px 8px rgba(36, 41, 46, 0.35)',
+      hoverBorder: '#24292e',
+      hoverShadow: 'rgba(36, 41, 46, 0.16)',
       actionable: false,
       external: true,
     },
@@ -122,7 +145,12 @@ export default function Contact() {
       label: 'LinkedIn',
       value: 'linkedin.com/in/karthikeyan-s',
       href: personal.linkedin,
-      icon: <LinkedInIcon />,
+      icon: <LinkedInIcon sx={{ fontSize: '1.35rem', color: '#ffffff' }} />,
+      badgeBg: '#0a66c2',
+      badgeBorder: '1px solid #0a66c2',
+      badgeShadow: '0 2px 8px rgba(10, 102, 194, 0.35)',
+      hoverBorder: '#0a66c2',
+      hoverShadow: 'rgba(10, 102, 194, 0.16)',
       actionable: false,
       external: true,
     },
@@ -133,54 +161,76 @@ export default function Contact() {
       id="contact"
       component="section"
       sx={{
-        py: { xs: 8, md: 12 },
+        py: { xs: 6, sm: 7, md: 8, lg: 9 },
         position: 'relative',
-        backgroundColor: '#0a0e14',
+        backgroundColor: '#ffffff',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 5 } }}>
         {/* Section Title */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 7 } }}>
-          <Typography
-            variant="body2"
-            sx={{
-              color: 'primary.main',
-              fontFamily: "'Manrope', sans-serif",
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              mb: 1,
-            }}
-          >
-            Get In Touch
-          </Typography>
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-              fontWeight: 800,
-            }}
-          >
-            <span className="text-gradient">Let's Connect</span>
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'text.secondary',
-              maxWidth: '560px',
-              mx: 'auto',
-              mt: 1.5,
-              fontSize: '0.95rem',
-            }}
-          >
-            Whether you have a job opportunity, a project collaboration, or just want to discuss web tech, my inbox is always open!
-          </Typography>
-        </Box>
+        <ScrollReveal delay={0}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 3.5, sm: 4, md: 4.5 } }}>
+            <Box
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.8,
+                px: 1.6,
+                py: 0.5,
+                borderRadius: '100px',
+                backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                border: '1px solid rgba(37, 99, 235, 0.22)',
+                boxShadow: '0 2px 8px -2px rgba(37, 99, 235, 0.15)',
+                mb: 1.2,
+              }}
+            >
+              <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#2563eb' }} />
+              <Typography
+                sx={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 700,
+                  fontSize: { xs: '0.74rem', sm: '0.78rem' },
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: 'primary.main',
+                  lineHeight: 1,
+                }}
+              >
+                Get In Touch
+              </Typography>
+            </Box>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '1.75rem', sm: '2.1rem', md: '2.3rem', lg: '2.6rem' },
+                fontWeight: 800,
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              <span className="text-gradient">Let's Connect</span>
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: '#475569',
+                maxWidth: '560px',
+                mx: 'auto',
+                mt: 0.6,
+                fontSize: { xs: '0.8rem', sm: '0.85rem', md: '0.88rem' },
+                lineHeight: 1.6,
+              }}
+            >
+              Whether you have a job opportunity, a project collaboration, or just want to discuss web tech, my inbox is always open!
+            </Typography>
+          </Box>
+        </ScrollReveal>
 
         <Grid container spacing={4} justifyContent="center">
           {/* Contact Direct Cards */}
           <Grid item xs={12} md={5}>
-            <Stack spacing={2}>
+            <ScrollReveal delay={0.1}>
+              <Stack spacing={2}>
               {contactMethods.map((c, i) => (
                 <Card
                   key={i}
@@ -194,13 +244,14 @@ export default function Contact() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     textDecoration: 'none',
-                    bgcolor: 'rgba(20, 28, 38, 0.7)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    bgcolor: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 8px 25px -4px rgba(15, 23, 42, 0.08), 0 3px 8px -2px rgba(15, 23, 42, 0.05)',
                     transition: 'all 0.25s ease',
                     '&:hover': {
-                      borderColor: 'rgba(26, 229, 183, 0.4)',
+                      borderColor: c.hoverBorder || '#2563eb',
                       transform: 'translateY(-3px)',
-                      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(26, 229, 183, 0.1)',
+                      boxShadow: `0 16px 35px -6px ${c.hoverShadow || 'rgba(37, 99, 235, 0.16)'}, 0 6px 12px -3px rgba(15, 23, 42, 0.06)`,
                     },
                   }}
                 >
@@ -209,9 +260,10 @@ export default function Contact() {
                       sx={{
                         width: 44,
                         height: 44,
-                        borderRadius: '10px',
-                        bgcolor: 'rgba(26, 229, 183, 0.1)',
-                        color: 'primary.main',
+                        borderRadius: '12px',
+                        bgcolor: c.badgeBg || '#ffffff',
+                        border: c.badgeBorder || '1px solid #e2e8f0',
+                        boxShadow: c.badgeShadow || 'none',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -221,10 +273,10 @@ export default function Contact() {
                       {c.icon}
                     </Box>
                     <Box>
-                      <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: '0.75rem' }}>
+                      <Typography variant="caption" sx={{ color: '#64748b', fontSize: '0.75rem' }}>
                         {c.label}
                       </Typography>
-                      <Typography variant="subtitle2" sx={{ color: '#ffffff', fontWeight: 600 }}>
+                      <Typography variant="subtitle2" sx={{ color: '#0f172a', fontWeight: 600 }}>
                         {c.value}
                       </Typography>
                     </Box>
@@ -232,7 +284,7 @@ export default function Contact() {
 
                   {c.actionable && (
                     <Tooltip title="Copy Email">
-                      <IconButton size="small" onClick={handleCopyEmail} sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}>
+                      <IconButton size="small" onClick={handleCopyEmail} sx={{ color: '#64748b', '&:hover': { color: 'primary.main' } }}>
                         <ContentCopyIcon sx={{ fontSize: '1rem' }} />
                       </IconButton>
                     </Tooltip>
@@ -240,19 +292,21 @@ export default function Contact() {
                 </Card>
               ))}
             </Stack>
-          </Grid>
+          </ScrollReveal>
+        </Grid>
 
-          {/* Quick Message Form */}
-          <Grid item xs={12} md={7}>
+        {/* Quick Message Form */}
+        <Grid item xs={12} md={7}>
+          <ScrollReveal delay={0.25}>
             <Card
               sx={{
                 p: { xs: 3, md: 4 },
-                bgcolor: 'rgba(20, 28, 38, 0.7)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                backdropFilter: 'blur(10px)',
+                bgcolor: '#ffffff',
+                border: '1px solid #e2e8f0',
+                boxShadow: '0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.05)',
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 700, color: '#ffffff', mb: 2 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#0f172a', mb: 2 }}>
                 Send a Direct Message
               </Typography>
               <Box component="form" onSubmit={handleSubmit}>
@@ -267,10 +321,10 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       sx={{
                         '& .MuiOutlinedInput-root': {
-                          bgcolor: 'rgba(14, 19, 27, 0.6)',
-                          '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.1)' },
-                          '&:hover fieldset': { borderColor: 'rgba(26, 229, 183, 0.4)' },
-                          '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+                          bgcolor: '#f8fafc',
+                          '& fieldset': { borderColor: '#cbd5e1' },
+                          '&:hover fieldset': { borderColor: '#2563eb' },
+                          '&.Mui-focused fieldset': { borderColor: '#2563eb' },
                         },
                       }}
                     />
@@ -286,10 +340,10 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       sx={{
                         '& .MuiOutlinedInput-root': {
-                          bgcolor: 'rgba(14, 19, 27, 0.6)',
-                          '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.1)' },
-                          '&:hover fieldset': { borderColor: 'rgba(26, 229, 183, 0.4)' },
-                          '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+                          bgcolor: '#f8fafc',
+                          '& fieldset': { borderColor: '#cbd5e1' },
+                          '&:hover fieldset': { borderColor: '#2563eb' },
+                          '&.Mui-focused fieldset': { borderColor: '#2563eb' },
                         },
                       }}
                     />
@@ -306,10 +360,10 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       sx={{
                         '& .MuiOutlinedInput-root': {
-                          bgcolor: 'rgba(14, 19, 27, 0.6)',
-                          '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.1)' },
-                          '&:hover fieldset': { borderColor: 'rgba(26, 229, 183, 0.4)' },
-                          '&.Mui-focused fieldset': { borderColor: 'primary.main' },
+                          bgcolor: '#f8fafc',
+                          '& fieldset': { borderColor: '#cbd5e1' },
+                          '&:hover fieldset': { borderColor: '#2563eb' },
+                          '&.Mui-focused fieldset': { borderColor: '#2563eb' },
                         },
                       }}
                     />
@@ -325,11 +379,11 @@ export default function Contact() {
                       sx={{
                         px: 3.5,
                         py: 1.2,
-                        boxShadow: '0 4px 16px rgba(26, 229, 183, 0.3)',
+                        boxShadow: '0 4px 16px rgba(37, 99, 235, 0.3)',
                         fontWeight: 700,
                         '&.Mui-disabled': {
-                          bgcolor: 'rgba(26, 229, 183, 0.5)',
-                          color: '#0e131b',
+                          bgcolor: 'rgba(37, 99, 235, 0.4)',
+                          color: '#ffffff',
                         },
                       }}
                     >
@@ -339,7 +393,8 @@ export default function Contact() {
                 </Grid>
               </Box>
             </Card>
-          </Grid>
+          </ScrollReveal>
+        </Grid>
         </Grid>
 
         {/* Footer */}
@@ -347,15 +402,15 @@ export default function Contact() {
           sx={{
             mt: 8,
             pt: 4,
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            borderTop: '1px solid #e2e8f0',
             textAlign: 'center',
           }}
         >
           <Typography
             variant="body2"
             sx={{
-              color: 'text.secondary',
-              fontFamily: "'Manrope', sans-serif",
+              color: '#475569',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: '0.88rem',
               fontWeight: 500,
             }}
@@ -365,11 +420,10 @@ export default function Contact() {
           <Typography
             variant="caption"
             sx={{
-              color: 'text.secondary',
-              opacity: 0.7,
+              color: '#64748b',
               mt: 0.6,
               display: 'block',
-              fontFamily: "'Manrope', sans-serif",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontSize: '0.78rem',
             }}
           >
@@ -385,7 +439,7 @@ export default function Contact() {
         onClose={() => setSnackbarOpen(false)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: '100%', bgcolor: '#141c26', color: '#1ae5b7', border: '1px solid #1ae5b7' }}>
+        <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: '100%', bgcolor: '#ffffff', color: '#0f172a', border: '1px solid #2563eb', boxShadow: '0 8px 30px rgba(15, 23, 42, 0.12)' }}>
           Email copied to clipboard!
         </Alert>
       </Snackbar>
@@ -402,10 +456,10 @@ export default function Contact() {
           severity={toast.severity}
           sx={{
             width: '100%',
-            bgcolor: '#141c26',
-            color: toast.severity === 'success' ? '#1ae5b7' : toast.severity === 'error' ? '#f87171' : '#38bdf8',
-            border: `1px solid ${toast.severity === 'success' ? '#1ae5b7' : toast.severity === 'error' ? '#f87171' : '#38bdf8'}`,
-            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.6)',
+            bgcolor: '#ffffff',
+            color: '#0f172a',
+            border: `1px solid ${toast.severity === 'success' ? '#2563eb' : toast.severity === 'error' ? '#ef4444' : '#2563eb'}`,
+            boxShadow: '0 8px 30px rgba(15, 23, 42, 0.12)',
           }}
         >
           {toast.message}
