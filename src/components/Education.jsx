@@ -11,11 +11,12 @@ import {
 } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import StarIcon from '@mui/icons-material/Star';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Education() {
-  const { education, achievements } = portfolioData;
+  const { education, achievements, certifications } = portfolioData;
 
   return (
     <Box
@@ -34,7 +35,7 @@ export default function Education() {
             variant="body2"
             sx={{
               color: 'primary.main',
-              fontFamily: "'Manrope', sans-serif",
+              fontFamily: "'JetBrains Mono', monospace",
               fontWeight: 600,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -50,7 +51,7 @@ export default function Education() {
               fontWeight: 800,
             }}
           >
-            <span className="text-gradient">Education & Achievements</span>
+            <span className="text-gradient">Education & Credentials</span>
           </Typography>
         </Box>
 
@@ -149,7 +150,7 @@ export default function Education() {
                       variant="caption"
                       sx={{
                         color: 'primary.main',
-                        fontFamily: "'Manrope', sans-serif",
+                        fontFamily: "'JetBrains Mono', monospace",
                         fontWeight: 600,
                         fontSize: '0.8rem',
                       }}
@@ -162,9 +163,72 @@ export default function Education() {
             </Box>
           </Grid>
 
-          {/* Achievements Column */}
+          {/* Certifications & Achievements Column */}
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 3 }}>
+            {/* Certifications */}
+            <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2.5 }}>
+              <Box
+                sx={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: '10px',
+                  bgcolor: 'rgba(56, 189, 248, 0.15)',
+                  color: '#38bdf8',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <CardMembershipIcon sx={{ fontSize: '1.25rem' }} />
+              </Box>
+              <Typography variant="h5" sx={{ fontWeight: 700, color: '#ffffff' }}>
+                Certifications
+              </Typography>
+            </Stack>
+
+            <Stack spacing={1.5} sx={{ mb: 4 }}>
+              {certifications && certifications.map((c, i) => (
+                <Card
+                  key={i}
+                  sx={{
+                    p: 2,
+                    bgcolor: 'rgba(20, 28, 38, 0.6)',
+                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    transition: 'all 0.25s ease',
+                    '&:hover': {
+                      borderColor: 'rgba(56, 189, 248, 0.4)',
+                      transform: 'translateX(3px)',
+                    },
+                  }}
+                >
+                  <Box>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#ffffff' }}>
+                      {c.title}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                      {c.issuer}
+                    </Typography>
+                  </Box>
+                  <Chip
+                    label={c.period}
+                    size="small"
+                    sx={{
+                      height: 22,
+                      fontSize: '0.7rem',
+                      bgcolor: 'rgba(56, 189, 248, 0.1)',
+                      color: '#38bdf8',
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                  />
+                </Card>
+              ))}
+            </Stack>
+
+            {/* Achievements */}
+            <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2.5 }}>
               <Box
                 sx={{
                   width: 36,
@@ -184,29 +248,29 @@ export default function Education() {
               </Typography>
             </Stack>
 
-            <Stack spacing={2}>
+            <Stack spacing={1.5}>
               {achievements.map((item, idx) => (
                 <Card
                   key={idx}
                   sx={{
-                    p: 2.2,
+                    p: 2,
                     bgcolor: 'rgba(20, 28, 38, 0.6)',
                     border: '1px solid rgba(255, 255, 255, 0.06)',
                     transition: 'all 0.25s ease',
                     '&:hover': {
                       borderColor: 'rgba(168, 85, 247, 0.35)',
-                      transform: 'translateX(4px)',
-                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
+                      transform: 'translateX(3px)',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
                     },
                   }}
                 >
-                  <Stack direction="row" spacing={1.5} alignItems="flex-start">
-                    <StarIcon sx={{ color: 'primary.main', fontSize: '1.2rem', mt: 0.3, flexShrink: 0 }} />
+                  <Stack direction="row" spacing={1.2} alignItems="flex-start">
+                    <StarIcon sx={{ color: 'primary.main', fontSize: '1.1rem', mt: 0.3, flexShrink: 0 }} />
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#ffffff', mb: 0.5 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#ffffff', mb: 0.3 }}>
                         {item.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.82rem', lineHeight: 1.55 }}>
                         {item.description}
                       </Typography>
                     </Box>
@@ -220,4 +284,3 @@ export default function Education() {
     </Box>
   );
 }
-

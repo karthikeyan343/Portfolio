@@ -16,9 +16,11 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 const navItems = [
   { label: 'About', href: '#hero' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Education', href: '#education' },
@@ -34,7 +36,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ['hero', 'skills', 'projects', 'education', 'contact'];
+      const sections = ['hero', 'experience', 'skills', 'projects', 'education', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -68,7 +70,7 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: scrolled ? 'rgba(14, 19, 27, 0.85)' : 'rgba(14, 19, 27, 0.4)',
+          backgroundColor: scrolled ? 'rgba(14, 19, 27, 0.88)' : 'rgba(14, 19, 27, 0.45)',
           backdropFilter: 'blur(16px)',
           borderBottom: '1px solid',
           borderColor: scrolled ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
@@ -78,7 +80,7 @@ export default function Navbar() {
       >
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ justifyContent: 'space-between', minHeight: { xs: 64, md: 72 } }}>
-            {/* Logo in circular glass container */}
+            {/* Logo */}
             <Box
               component="a"
               href="#hero"
@@ -93,14 +95,13 @@ export default function Navbar() {
                 cursor: 'pointer',
                 background: 'rgba(255, 255, 255, 0.04)',
                 backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255, 255, 255, 0.14)',
                 boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.18)',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 '&:hover': {
                   background: 'rgba(26, 229, 183, 0.08)',
                   borderColor: 'rgba(26, 229, 183, 0.5)',
-                  boxShadow: '0 0 20px rgba(26, 229, 183, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.25)',
+                  boxShadow: '0 0 20px rgba(26, 229, 183, 0.3)',
                   transform: 'scale(1.06)',
                 },
               }}
@@ -112,10 +113,6 @@ export default function Navbar() {
                   fontWeight: 800,
                   letterSpacing: '-0.02em',
                   lineHeight: 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  userSelect: 'none',
                 }}
               >
                 <span className="text-gradient">SK</span>
@@ -123,7 +120,7 @@ export default function Navbar() {
             </Box>
 
             {/* Desktop Navigation Links */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.5 }}>
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.replace('#', '');
                 return (
@@ -133,8 +130,8 @@ export default function Navbar() {
                     sx={{
                       color: isActive ? 'primary.main' : 'text.secondary',
                       fontWeight: isActive ? 600 : 500,
-                      fontSize: '0.9rem',
-                      px: 2,
+                      fontSize: '0.88rem',
+                      px: 1.8,
                       py: 0.8,
                       position: 'relative',
                       '&:hover': {
@@ -147,14 +144,18 @@ export default function Navbar() {
                   </Button>
                 );
               })}
+
+              {/* Resume Button */}
               <Button
                 variant="outlined"
                 color="primary"
                 size="small"
-                href="#contact"
-                startIcon={<EmailOutlinedIcon sx={{ fontSize: '1rem !important' }} />}
+                href="/asset/Karthikeyan_S_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                startIcon={<FileDownloadOutlinedIcon sx={{ fontSize: '1rem !important' }} />}
                 sx={{
-                  ml: 2,
+                  ml: 1.5,
                   borderColor: 'rgba(26, 229, 183, 0.4)',
                   '&:hover': {
                     borderColor: 'primary.main',
@@ -162,7 +163,21 @@ export default function Navbar() {
                   },
                 }}
               >
-                Get In Touch
+                Resume
+              </Button>
+
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                href="#contact"
+                startIcon={<EmailOutlinedIcon sx={{ fontSize: '1rem !important' }} />}
+                sx={{
+                  ml: 1,
+                  boxShadow: '0 4px 12px rgba(26, 229, 183, 0.3)',
+                }}
+              >
+                Hire Me
               </Button>
             </Box>
 
@@ -219,7 +234,19 @@ export default function Navbar() {
               </ListItemButton>
             </ListItem>
           ))}
-          <ListItem disablePadding sx={{ mt: 2 }}>
+          <ListItem disablePadding sx={{ mt: 2, gap: 1 }}>
+            <Button
+              fullWidth
+              variant="outlined"
+              color="primary"
+              href="/asset/Karthikeyan_S_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              startIcon={<FileDownloadOutlinedIcon />}
+              sx={{ py: 1.2 }}
+            >
+              Resume PDF
+            </Button>
             <Button
               fullWidth
               variant="contained"
@@ -228,7 +255,7 @@ export default function Navbar() {
               startIcon={<EmailOutlinedIcon />}
               sx={{ py: 1.2 }}
             >
-              Contact Karthikeyan
+              Contact Me
             </Button>
           </ListItem>
         </List>
@@ -236,4 +263,3 @@ export default function Navbar() {
     </>
   );
 }
-
